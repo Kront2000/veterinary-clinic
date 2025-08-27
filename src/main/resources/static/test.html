@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vet Clinic</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: #f2f9ff;
+    }
+
+    .cards {
+      display: flex; /* или можно grid */
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 280px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+      font-size: 20px;
+      color: #004a80;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="cards">
+    <div class="card">
+      <img src="img/pet_icon.png" alt="Cat">
+      <h3>Обследование</h3>
+      <p>Регулярные осмотры и вакцинация помогут сохранить здоровье вашего питомца.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/health_icon.png" alt="Dog">
+      <h3>Хирургия</h3>
+      <p>Наши врачи проводят операции любой сложности с заботой о безопасности.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/dog_icon.png" alt="Pet Care">
+      <h3>Срочная помощь</h3>
+      <p>Мы всегда готовы оказать помощь в экстренной ситуации, 24/7.</p>
+    </div>
+  </div>
+</body>
+</html>
