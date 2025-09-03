@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статьи</title>
+    <script>
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "/css/article_read.css?ts=" + new Date().getTime();
+        document.head.appendChild(link);
+    </script>
+    <link rel="icon" href="/img/ZOOVET_KONSALTING2.png">
+</head>
+
+<body>
+    <div class="top">
+        <div class="top_context">
+            <div class="top_menu">
+                <a href="index.html" class="logo_container">
+                    <img src="/img/ZOOVET_KONSALTING2.png" class="logo_img" alt="">
+                </a>
+                <div class="menu_button_container">
+                    <div class="menu_button">УСЛУГИ</div>
+                    <div class="menu_button">СТАТЬИ</div>
+                    <div class="menu_button">АПТЕКА</div>
+                    <div class="menu_button">КОНТАКТЫ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="middle">
+        <div class="middle_context">
+            <form id="editForm" enctype="multipart/form-data">
+                <input type="hidden" name="id" id="id">
+
+                <input class="text" type="text" name="name" placeholder="Заголовок статьи" id="name" />
+                <input class="text" type="text" name="description" placeholder="Описание" id="description">
+                <input class="text" type="file" accept="image/*" name="image" id="image">
+
+                <label class="text" for="on_main">Показывать на главной странице:</label>
+                <input type="hidden" name="on_main" value="false">
+                <input name="on_main" id="on_main" type="checkbox">
+                
+                <textarea id="text" name="text"></textarea>
+
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <div class="bottom_context">
+            <div class="bottom_block">
+                <img src="/img/ZOOVET_KONSALTING2.png" class="logo_bottom_img" alt="">
+            </div>
+            <div class="bottom_block">
+                <h3>Адрес</h3>
+                <p>Улица Тауелсыздык, 76<br>Тобыл, Костанайская область</p>
+            </div>
+            <div class="bottom_block">
+                <h3>График работы</h3>
+                <p>Ежедневно с 09:00 до 22:00</p>
+                <p>Обед c 13:00 до 14:00</p>
+            </div>
+            <div class="bottom_block">
+                <h3>Контакты</h3>
+                <h4>Whatsapp</h4>
+                <p>+77052125345</p>
+                <p>+77052125345</p>
+                <h4>Telegram</h4>
+                <p>@zoovet</p>
+                <h4>Instagram</h4>
+                <p>@vetklinikakost</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.tiny.cloud/1/9087kva4l83saezysffy1pjmnwp58g49r8kheq0hm6lrslfc/tinymce/7/tinymce.min.js"></script>
+
+    <script>
+        let articleId = null;
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            articleId = urlParams.get("id");
+
+            if (!articleId) return;
+
+            const res = await fetch(`/api/v1/article/getById?id=${articleId}`);
+            if (!res.ok) {
+                alert("Ошибка загрузки статьи");
+                return;
+            }
+
+            const article = await res.json();
+
+            document.getElementById('name').value = article.name || "";
+            document.getElementById('description').value = article.description || "";
+            document.getElementById('text').value = article.content || "";
+            document.getElementById('id').value = article.id || "";
+            document.getElementById('on_main').checked = article.onmain === true;
+        });
+
+        tinymce.init({
+            selector: '#text',
+            menubar: false,
+            plugins: 'link image lists advlist',
+            toolbar: 'undo redo | blocks | bold italic | bullist numlist | link image',
+            block_formats: 'Абзац=p; Мини заголовок 5=h5; Предисловие 3=h4',
+            height: 400
+        });
+
+        const form = document.getElementById('editForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            tinymce.triggerSave();
+
+            const formData = new FormData();
+            formData.append('id', articleId);
+            formData.append('name', document.getElementById('name').value);
+            formData.append('text', document.getElementById('text').value);
+            formData.append('description', document.getElementById('description').value);
+            formData.append('on_main', document.getElementById('on_main').checked);
+
+            const fileInput = document.getElementById('image');
+            if (fileInput.files.length > 0) {
+                formData.append('image', fileInput.files[0]);
+            }
+
+            const response = await fetch('/api/v1/article/edit', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                alert('Статья сохранена!');
+                window.location.href = 'admin.html';
+            } else {
+                const errorText = await response.text();
+                alert('Ошибка: ' + errorText);
+            }
+        });
+    </script>
+</body>
+
+</html>

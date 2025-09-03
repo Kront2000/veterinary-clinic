@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статьи</title>
+    <script>
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = "/css/article_read.css?ts=" + new Date().getTime();
+        document.head.appendChild(link);
+    </script>
+    <link rel="icon" href="css\article_read.css">
+</head>
+
+<body>
+    <div class="top">
+        <div class="top_context">
+            <div class="top_menu">
+                <div class="logo_container">
+                    <img src="img/ZOOVET_KONSALTING2.png" class="logo_img" alt="">
+                    <!-- <img src="img/GPS.png" class="gps_img" alt=""> -->
+                </div>
+                <div class="menu_button_container">
+                    <div class="menu_button">УСЛУГИ</div>
+                    <div class="menu_button">СТАТЬИ</div>
+                    <div class="menu_button">АПТЕКА</div>
+                    <div class="menu_button">КОНТАКТЫ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle">
+        <div class="middle_context">
+            <form id="editForm" action="/articles" method="post" enctype="multipart/form-data">
+                <input class="text" type="text" name="name" placeholder="Заголовок статьи" id="name" />
+                <input class="text" type="text" name="description" placeholder="Описание" id="description">
+                <input class="text" type="file" accept="image/*" name="image" id="image"> 
+                <label class="text" for="onmain">Показывать на главной странице:</label>
+                <input type="hidden" name="on_main" value="false">
+                <input name="on_main" id="on_main" type="checkbox">
+                <textarea id="text" name="text"></textarea>
+
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom_context">
+            <div class="bottom_block">
+                <img src="img/ZOOVET_KONSALTING2.png" class="logo_bottom_img" alt="">
+            </div>
+            <div class="bottom_block">
+                <h3>Адрес</h3>
+                <p>
+                    Улица Тауелсыздык, 76
+                    Тобыл, Костанайская область
+                </p>
+            </div>
+            <div class="bottom_block">
+                <h3>График работы</h3>
+                <h1>Ежедневно с 09:00 до 22:00</h1>
+                <h1>Обед c 13:00 до 14:00</h1>
+            </div>
+            <div class="bottom_block">
+                <h3>Контакты</h3>
+                <h1>Whatsapp</h1>
+                <p>+77052125345</p>
+                <p>+77052125345</p>
+                <h1>Telegram</h1>
+                <p>@zoovet</p>
+                <h1>Instagram</h1>
+                <p>@vetklinikakost</p>
+            </div>
+        </div>
+        <script
+            src="https://cdn.tiny.cloud/1/9087kva4l83saezysffy1pjmnwp58g49r8kheq0hm6lrslfc/tinymce/7/tinymce.min.js"></script>
+        <script>
+            tinymce.init({
+                selector: '#text',
+                menubar: false,
+                plugins: 'link image lists advlist',
+                toolbar: 'undo redo | blocks | bold italic | bullist numlist | link image',
+                block_formats: 'Абзац=p; мини заголовок 5=h5; Предисловие 3=h4',
+                height: 400
+            });
+        </script>
+
+        <script>
+
+            const form = document.getElementById('editForm');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                tinymce.triggerSave();
+                const formData = new FormData(form);
+
+                const response = await fetch('/api/v1/article/add', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert('Блюдо добавлено!');
+                    window.location.href = 'admin.html';
+                } else {
+                    const errorText = await response.text(); // читаем тело как текст
+                    alert('Ошибка: ' + errorText);
+                }
+            });
+
+
+
+        </script>
+</body>
+
+</html>
+
+</html>

@@ -1,0 +1,109 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статьи</title>
+    <link rel="stylesheet" href="css/article.css">
+    <link rel="icon" href="img/zoovet3.png">
+</head>
+
+<body>
+    <div class="top">
+        <div class="top_context">
+            <div class="top_menu">
+                <a href="index.html" class="logo_container">
+                    <img src="img/ZOOVET_KONSALTING2.png" class="logo_img" alt="">
+                    <!-- <img src="img/GPS.png" class="gps_img" alt=""> -->
+                    <a>
+                        <div class="menu_button_container">
+                            <a href="" class="menu_button">УСЛУГИ</a>
+                            <a href="article.html" class="menu_button">СТАТЬИ</a>
+                            <a href="" class="menu_button">АПТЕКА</a>
+                            <a href="" class="menu_button">КОНТАКТЫ</a>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle">
+        <div class="middle_context">
+            <div class="main_description_head">
+                Статьи
+            </div>
+
+            <div class="article_grid" id="article-grid">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom_context">
+            <div class="bottom_block">
+                <img src="img/ZOOVET_KONSALTING2.png" class="logo_bottom_img" alt="">
+            </div>
+            <div class="bottom_block">
+                <h3>Адрес</h3>
+                <p>
+                    Улица Тауелсыздык, 76
+                    Тобыл, Костанайская область
+                </p>
+            </div>
+            <div class="bottom_block">
+                <h3>График работы</h3>
+                <h1>Ежедневно с 09:00 до 22:00</h1>
+                <h1>Обед c 13:00 до 14:00</h1>
+            </div>
+            <div class="bottom_block">
+                <h3>Контакты</h3>
+                <h1>Whatsapp</h1>
+                <p>+77052125345</p>
+                <p>+77052125345</p>
+                <h1>Telegram</h1>
+                <p>@zoovet</p>
+                <h1>Instagram</h1>
+                <p>@vetklinikakost</p>
+            </div>
+            
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const swiperWrapper = document.getElementById('article-grid');
+
+                fetch('/api/v1/article') // путь к JSON на сервере
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(article => {
+                            const slide = document.createElement("div");
+                            slide.classList.add("swiper-slide");
+
+                            slide.innerHTML = `
+                            
+                                <img src="${article.image_path}" alt="">
+                                <div class="articl_slide_text">
+                                    <h2 class="articl_slide_text_h2">${article.name}</h2>
+                                    <p class="articl_slide_text_p">${article.description}</p>
+                                    <h1 class="articl_slide_text_h1">
+                                        <a class="articl_slide_text_a" href="read_article.html/?id=${article.id}">Читать дальше</a>
+                                        <a class="articl_slide_text_a" href="article_edit.html/?id=${article.id}">Ред.</a>
+                                    </h1>
+                                    
+                                </div>
+                            
+                            `;
+                            swiperWrapper.appendChild(slide);
+
+                        });
+                        const button = document.createElement("div");
+                        button.classList.add("articl_slide_text_h1");
+                        button.innerHTML = `<a class="articl_slide_text_a" href="article_add.html">Добавить</a>`;
+                        swiperWrapper.appendChild(button);
+                    })
+                    .catch(error => console.error("Ошибка загрузки JSON:", error));
+            });
+        </script>
+</body>
+
+</html>
+
+</html>

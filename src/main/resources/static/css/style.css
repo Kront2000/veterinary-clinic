@@ -58,6 +58,7 @@ body {
     font-weight: 600;
     font-size: 20px;
     color: rgb(39, 39, 39);
+    text-decoration: none;
 }
 
 .main_description {
@@ -549,25 +550,26 @@ body {
     margin-left: 10px;
     height: 100%;
     position: relative;
+    width: auto;
     
 }
 
-.articl_slide_text h2{
+.articl_slide_text_h2{
     font-weight: 700;
     font-size: 28px;
     color: rgb(39, 67, 102);
     margin: 10px 0 10px 3px;
 }
-.articl_slide_text p{
+.articl_slide_text_p{
     font-weight: 700;
     font-size: 15px;
     color: rgb(39, 67, 102);
     margin: 10px 0 10px 3px;
 }
-.articl_slide_text a{
+.articl_slide_text_a{
     text-decoration: none;
 }
-.articl_slide_text h1{
+.articl_slide_text_h1{
     font-weight: 700;
     font-size: 15px;
     color: rgb(109, 170, 246);

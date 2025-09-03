@@ -1,6 +1,5 @@
-package com.veterinary_clinic.veterinary_clinic.procedures.repository;
+package com.veterinary_clinic.veterinary_clinic.procedures;
 
-import com.veterinary_clinic.veterinary_clinic.procedures.model.Procedures;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

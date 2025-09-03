@@ -1,7 +1,5 @@
-package com.veterinary_clinic.veterinary_clinic.procedures.controller;
+package com.veterinary_clinic.veterinary_clinic.procedures;
 
-import com.veterinary_clinic.veterinary_clinic.procedures.dto.ProceduresDto;
-import com.veterinary_clinic.veterinary_clinic.procedures.service.ProceduresService;
 import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +15,9 @@ import java.util.List;
 @RequestMapping("/api/v1/procedures")
 public class ProceduresController {
     private final ProceduresService proceduresService;
-
     @GetMapping
     public List<ProceduresDto> findAll(){
         System.out.println("yes");
         return proceduresService.findAll();
     }
-
-
 }

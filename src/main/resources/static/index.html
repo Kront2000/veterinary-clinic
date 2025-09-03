@@ -7,23 +7,24 @@
         link.href = "/css/style.css?ts=" + new Date().getTime();
         document.head.appendChild(link);
     </script>
+    <link rel="icon" href="img/zoovet3.png">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Зоовет консалтинг</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
     <div class="top">
         <div class="top_context">
             <div class="top_menu">
-                <div class="logo_container">
+                <a href="index.html" class="logo_container">
                     <img src="img/ZOOVET_KONSALTING2.png" class="logo_img" alt="">
                     <!-- <img src="img/GPS.png" class="gps_img" alt=""> -->
-                </div>
+                <a>
                 <div class="menu_button_container">
-                    <div class="menu_button">УСЛУГИ</div>
-                    <div class="menu_button">СТАТЬИ</div>
-                    <div class="menu_button">АПТЕКА</div>
-                    <div class="menu_button">КОНТАКТЫ</div>
+                    <a href="" class="menu_button">УСЛУГИ</a>
+                    <a href="article.html" class="menu_button">СТАТЬИ</a>
+                    <a href="" class="menu_button">АПТЕКА</a>
+                    <a href="" class="menu_button">КОНТАКТЫ</a>
                 </div>
             </div>
             <img src="img/dog6.png" class="dog_img" alt="">
@@ -108,49 +109,8 @@
                 <a href="" class="apteka_a">Посмотреть все товары</a>
             </div>
             <div class="apteka_line"></div>
-            <div class="carousel">
-                <div class="apteka_card">
-                    <img class="apteka_img" src="img/antibiotik.jpg" alt="">
-                    <h3>Нитокс</h3>
-                    <p>Лекарство от всех бед</p>
-                    <h1>1000тг</h1>
-                </div>
-                <div class="apteka_card">
-                    <img src="img/antibiotik.jpg" alt="">
-                    <h3>Нитокс</h3>
-                    <p>Лекарство от всех бед</p>
-                    <h1>1000тг</h1>
-                </div>
-                <div class="apteka_card">
-                    <img src="img/antibiotik.jpg" alt="">
-                    <h3>Нитокс</h3>
-                    <p>Лекарство от всех бед</p>
-                    <h1>1000тг</h1>
-                </div>
-                <div class="apteka_card">
-                    <img src="img/antibiotik.jpg" alt="">
-                    <h3>Нитокс</h3>
-                    <p>Лекарство от всех бед</p>
-                    <h1>1000тг</h1>
-                </div>
-                <div class="apteka_card">
-                    <img src="img/antibiotik.jpg" alt="">
-                    <h3>Нитокс</h3>
-                    <p>Лекарство от всех бед</p>
-                    <h1>1000тг</h1>
-                </div>
-                <div class="apteka_card">
-                    <img src="img/antibiotik.jpg" alt="">
-                    <h3>Нитокс</h3>
-                    <p>Лекарство от всех бед</p>
-                    <h1>1000тг</h1>
-                </div>
-                <div class="apteka_card">
-                    <img src="img/antibiotik.jpg" alt="">
-                    <h3>Нитокс</h3>
-                    <p>Лекарство от всех бед</p>
-                    <h1>1000тг</h1>
-                </div>
+            <div class="carousel" id="product">
+                <!-- ПРОДУКТЫ -->
             </div>
             <div class="apteka_line"></div>
         </div>
@@ -204,7 +164,7 @@
                 </div>
                 <div class="swiper swiper_articles" >
                     <div class="swiper-wrapper" id="swiper_articles">
-                        
+                        <!-- СТАТЬИ -->
                     </div>
                     <div class="swiper-button-prev swiper-button-prev_articles"></div>
                     <div class="swiper-button-next swiper-button-next_articles"></div>
@@ -243,6 +203,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/articles.js"></script>
+    <script src="js/product.js" ></script>
     <script>
         const swiper = new Swiper('.swiper_review', {
 
