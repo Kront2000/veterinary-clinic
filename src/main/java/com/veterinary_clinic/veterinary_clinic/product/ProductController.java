@@ -81,8 +81,8 @@ public class ProductController {
 
         System.out.println("Сохранённый продукт" + productService.updateProduct(productDto));
     }
-    @DeleteMapping("/deleteProduct")
-    @CacheEvict(value = "menu", allEntries = true)
+    @DeleteMapping
+
     public void deleteDish(@RequestParam("id") Long id){
         productService.deleteDish(id);
     }

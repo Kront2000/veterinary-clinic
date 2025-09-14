@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Админка — Услуги</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/procedure.css">
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo_container">
+      <img src="img/ZOOVET_KONSALTING2.png" class="logo_img" alt="">
+    </a>
+    <div class="menu_button_container">
+      <a href="procedure.html" class="menu_button">УСЛУГИ</a>
+      <a href="article.html" class="menu_button">СТАТЬИ</a>
+      <a href="apteka.html" class="menu_button">АПТЕКА</a>
+      <a href="" class="menu_button">КОНТАКТЫ</a>
+    </div>
+  </header>
+
+  <section class="admin-container">
+    <h1>Админ-панель: категории и услуги</h1>
+    <button class="btn btn-add" onclick="openCategoryModal()">+ Добавить категорию</button>
+    <div id="categories"></div>
+  </section>
+
+  <!-- модалка для категорий -->
+  <div class="modal" id="categoryModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('categoryModal')">&times;</span>
+      <h3 id="catModalTitle">Новая категория</h3>
+      <input type="hidden" id="catId">
+      <input type="text" id="catName" placeholder="Название категории">
+      <input type="text" id="catDesc" placeholder="Описание категории">
+      <input type="file" id="catImgFile" accept="image/*">
+      <button class="btn btn-add" onclick="saveCategory()">Сохранить</button>
+    </div>
+  </div>
+
+  <!-- модалка для процедур -->
+  <div class="modal" id="procedureModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('procedureModal')">&times;</span>
+      <h3 id="procModalTitle">Новая услуга</h3>
+      <input type="hidden" id="procId">
+      <input type="hidden" id="procCatId">
+      <input type="hidden" id="procCatName">
+      <input type="text" id="procName" placeholder="Название услуги">
+      <input type="number" id="procPrice" placeholder="Цена">
+
+      <label style="display:flex;align-items:center;gap:8px;margin:8px 0;">
+        <input type="checkbox" id="procOnMain">
+        Показать на главной
+      </label>
+      <button class="btn btn-add" onclick="saveProcedure()">Сохранить</button>
+    </div>
+  </div>
+
+  <script>
+    const categoriesContainer = document.getElementById("categories");
+
+    // загрузка категорий
+    async function loadCategories() {
+      try {
+        const response = await fetch("/api/v1/procedures");
+        const data = await response.json();
+        renderCategories(data);
+      } catch (e) {
+        console.error("Ошибка загрузки категорий:", e);
+      }
+    }
+
+    function renderCategories(data) {
+      categoriesContainer.innerHTML = "";
+      data.forEach(cat => {
+        const card = document.createElement("div");
+        card.className = "category-card";
+        card.innerHTML = `
+          <div class="category-header">
+            <h2>${cat.name}</h2>
+            <div>
+              <button class="btn btn-edit" onclick="editCategory(${cat.id}, '${cat.name}', '${cat.description}')">Ред.</button>
+              <button class="btn btn-del" onclick="deleteCategory(${cat.id})">Удалить</button>
+              <button class="btn btn-add" onclick="openProcedureModal(${cat.id}, '${cat.name}')">+ Услуга</button>
+            </div>
+          </div>
+          <p>${cat.description}</p>
+          <ul class="procedure-list">
+            ${cat.procedures.map(p => `
+              <li class="procedure-item">
+                <span>
+                  ${p.name} — ${p.price} тг ${p.on_main ? "⭐" : ""}
+                </span>
+                <span>
+                  <button class="btn btn-edit" onclick="editProcedure(${p.id}, ${cat.id}, '${p.name}', ${p.price}, ${p.on_main}, '${cat.name}')">Ред.</button>
+                  <button class="btn btn-del" onclick="deleteProcedure(${p.id})">Удал.</button>
+                </span>
+              </li>
+            `).join("")}
+          </ul>
+        `;
+        categoriesContainer.appendChild(card);
+      });
+    }
+
+    // --- Модалки ---
+    function openCategoryModal() {
+      document.getElementById("catId").value = "";
+      document.getElementById("catName").value = "";
+      document.getElementById("catDesc").value = "";
+      document.getElementById("catImgFile").value = "";
+      document.getElementById("catModalTitle").textContent = "Новая категория";
+      document.getElementById("categoryModal").style.display = "flex";
+    }
+
+    function editCategory(id, name, desc) {
+      document.getElementById("catId").value = id;
+      document.getElementById("catName").value = name;
+      document.getElementById("catDesc").value = desc;
+      document.getElementById("catImgFile").value = "";
+      document.getElementById("catModalTitle").textContent = "Редактировать категорию";
+      document.getElementById("categoryModal").style.display = "flex";
+    }
+
+    function openProcedureModal(catId, catName) {
+      document.getElementById("procId").value = "";
+      document.getElementById("procCatId").value = catId;
+      document.getElementById("procCatName").value = catName;
+      document.getElementById("procName").value = "";
+      document.getElementById("procPrice").value = "";
+
+      document.getElementById("procOnMain").checked = false;
+      document.getElementById("procModalTitle").textContent = "Новая услуга";
+      document.getElementById("procedureModal").style.display = "flex";
+    }
+
+    function editProcedure(id, catId, name, price, on_main, catName) {
+      document.getElementById("procId").value = id;
+      document.getElementById("procCatId").value = catId;
+      document.getElementById("procCatName").value = catName;
+      document.getElementById("procName").value = name;
+      document.getElementById("procPrice").value = price;
+
+      document.getElementById("procOnMain").checked = !!on_main;
+      document.getElementById("procModalTitle").textContent = "Редактировать услугу";
+      document.getElementById("procedureModal").style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    // --- Сохранение ---
+    async function saveCategory() {
+      const id = document.getElementById("catId").value;
+      const formData = new FormData();
+      formData.append("id", document.getElementById("catId").value);
+      formData.append("name", document.getElementById("catName").value);
+      formData.append("description", document.getElementById("catDesc").value);
+
+      const file = document.getElementById("catImgFile").files[0];
+      if (file) formData.append("image", file);
+      let response;
+      if (id) {
+        response = await fetch(`/api/v1/categoryProcedures?id=${id}`, { method: "PUT", body: formData });
+      } else {
+        response = await fetch("/api/v1/categoryProcedures", { method: "POST", body: formData });
+      }
+
+      if (response.ok) {
+        alert('Сохранено!');
+      } else {
+        const errorText = await response.text();
+        alert('Ошибка: ' + errorText);
+      }
+
+      closeModal("categoryModal");
+      loadCategories();
+    }
+
+    async function deleteCategory(id) {
+      response = await fetch(`/api/v1/categoryProcedures?id=${id}`, { method: "DELETE" });
+      if (response.ok) {
+        alert('Сохранено!');
+      } else {
+        const errorText = await response.text();
+        alert('Ошибка: ' + errorText);
+      }
+      loadCategories();
+    }
+
+    async function saveProcedure() {
+      const id = document.getElementById("procId").value;
+      const formData = new FormData();
+      formData.append("name", document.getElementById("procName").value);
+      formData.append("price", document.getElementById("procPrice").value);
+      formData.append("category", document.getElementById("procCatName").value);
+      formData.append("on_main", document.getElementById("procOnMain").checked);
+
+
+
+
+      let response;
+      if (id) {
+        response = await fetch(`/api/v1/procedures?id=${id}`, { method: "PUT", body: formData });
+      } else {
+        response = await fetch("/api/v1/procedures", { method: "POST", body: formData });
+      }
+
+      if (response.ok) {
+        alert('Сохранено!');
+      } else {
+        const errorText = await response.text();
+        alert('Ошибка: ' + errorText);
+      }
+
+      closeModal("procedureModal");
+      loadCategories();
+    }
+
+    async function deleteProcedure(id) {
+      await fetch(`/api/v1/procedures?id=${id}`, { method: "DELETE" });
+      loadCategories();
+    }
+
+    loadCategories();
+  </script>
+</body>
+
+</html>

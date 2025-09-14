@@ -103,7 +103,7 @@
 
                 if (response.ok) {
                     alert('Блюдо добавлено!');
-                    window.location.href = 'admin.html';
+                    window.location.href = 'article_admin.html';
                 } else {
                     const errorText = await response.text(); // читаем тело как текст
                     alert('Ошибка: ' + errorText);

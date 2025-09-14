@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script>
         const link = document.createElement("link");
@@ -12,6 +13,7 @@
     <title>Зоовет консалтинг</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
+
 <body>
     <div class="top">
         <div class="top_context">
@@ -19,13 +21,13 @@
                 <a href="index.html" class="logo_container">
                     <img src="img/ZOOVET_KONSALTING2.png" class="logo_img" alt="">
                     <!-- <img src="img/GPS.png" class="gps_img" alt=""> -->
-                <a>
-                <div class="menu_button_container">
-                    <a href="" class="menu_button">УСЛУГИ</a>
-                    <a href="article.html" class="menu_button">СТАТЬИ</a>
-                    <a href="" class="menu_button">АПТЕКА</a>
-                    <a href="" class="menu_button">КОНТАКТЫ</a>
-                </div>
+                    <a>
+                        <div class="menu_button_container">
+                            <a href="procedure.html" class="menu_button">УСЛУГИ</a>
+                            <a href="article.html" class="menu_button">СТАТЬИ</a>
+                            <a href="apteka.html" class="menu_button">АПТЕКА</a>
+                            <a href="" class="menu_button">КОНТАКТЫ</a>
+                        </div>
             </div>
             <img src="img/dog6.png" class="dog_img" alt="">
             <div class="main_description">
@@ -63,8 +65,8 @@
         <div class="procedures_context">
             <div class="procedures_description">
                 <div class="procedures_description_head">Наши услуги</div>
-                <div class="procedures_cards">
-                    <div class="procedure_card">
+                <div class="procedures_cards" id="proceduresContainer">
+                    <!-- <div class="procedure_card">
                         <img src="img/cat_icon.png" class="procedures_card_img" alt="Cat">
                         <div class="line"></div>
                         <div class="procedure_card_text">
@@ -95,18 +97,18 @@
                             <h3>Стирилизация собаки</h3>
                             <p>15000тг</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <img src="img/cat2.png" class="procedures_context_img" alt="">
-            <a href="" class="procedures_a">Посмотреть все услуги</a>
+            <a href="procedure.html" class="procedures_a">Посмотреть все услуги</a>
         </div>
     </div>
     <div class="opteka">
         <div class="opteka_context">
             <div class="apteka_top">
                 <div class="apteka_description_head">Вет аптека</div>
-                <a href="" class="apteka_a">Посмотреть все товары</a>
+                <a href="article.html" class="apteka_a">Посмотреть все товары</a>
             </div>
             <div class="apteka_line"></div>
             <div class="carousel" id="product">
@@ -162,7 +164,7 @@
                 <div class="articles_top_container">
                     <div class="articles_head">Статьи</div>
                 </div>
-                <div class="swiper swiper_articles" >
+                <div class="swiper swiper_articles">
                     <div class="swiper-wrapper" id="swiper_articles">
                         <!-- СТАТЬИ -->
                     </div>
@@ -203,7 +205,8 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/articles.js"></script>
-    <script src="js/product.js" ></script>
+    <script src="js/procedure.js"></script>
+    <script src="js/product.js"></script>
     <script>
         const swiper = new Swiper('.swiper_review', {
 
@@ -231,4 +234,5 @@
         });
     </script>
 </body>
+
 </html>

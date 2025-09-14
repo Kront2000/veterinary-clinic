@@ -22,10 +22,10 @@
                     <img src="/img/ZOOVET_KONSALTING2.png" class="logo_img" alt="">
                 </a>
                 <div class="menu_button_container">
-                    <div class="menu_button">УСЛУГИ</div>
-                    <div class="menu_button">СТАТЬИ</div>
-                    <div class="menu_button">АПТЕКА</div>
-                    <div class="menu_button">КОНТАКТЫ</div>
+                    <a href="procedure.html" class="menu_button">УСЛУГИ</a>
+                    <a href="article.html" class="menu_button">СТАТЬИ</a>
+                    <a href="apteka.html" class="menu_button">АПТЕКА</a>
+                    <a href="" class="menu_button">КОНТАКТЫ</a>
                 </div>
             </div>
         </div>
@@ -43,10 +43,11 @@
                 <label class="text" for="on_main">Показывать на главной странице:</label>
                 <input type="hidden" name="on_main" value="false">
                 <input name="on_main" id="on_main" type="checkbox">
-                
+
                 <textarea id="text" name="text"></textarea>
 
-                <button type="submit">Сохранить</button>
+                <button type="submit" id="editBtn">Сохранить</button>
+                <button type="submit" id="deleteBtn">Удалить</button>
             </form>
         </div>
     </div>
@@ -78,7 +79,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.tiny.cloud/1/9087kva4l83saezysffy1pjmnwp58g49r8kheq0hm6lrslfc/tinymce/7/tinymce.min.js"></script>
+    <script
+        src="https://cdn.tiny.cloud/1/9087kva4l83saezysffy1pjmnwp58g49r8kheq0hm6lrslfc/tinymce/7/tinymce.min.js"></script>
 
     <script>
         let articleId = null;
@@ -101,7 +103,7 @@
             document.getElementById('description').value = article.description || "";
             document.getElementById('text').value = article.content || "";
             document.getElementById('id').value = article.id || "";
-            document.getElementById('on_main').checked = article.onmain === true;
+            document.getElementById('on_main').checked = article.on_main === true;
         });
 
         tinymce.init({
@@ -113,8 +115,33 @@
             height: 400
         });
 
-        const form = document.getElementById('editForm');
-        form.addEventListener('submit', async (e) => {
+        const deleteBtn = document.getElementById('deleteBtn');
+        deleteBtn.addEventListener('click', async () => {
+            if (!articleId) {
+                alert("Нет статьи для удаления");
+                return;
+            }
+
+            if (!confirm("Вы уверены, что хотите удалить статью?")) {
+                return;
+            }
+
+            const response = await fetch(`/api/v1/article?id=${articleId}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                alert("Статья удалена!");
+                window.location.href = 'article_admin.html';
+            } else {
+                const errorText = await response.text();
+                alert("Ошибка: " + errorText);
+            }
+        });
+
+
+        const editBtn = document.getElementById('editBtn');
+        editBtn.addEventListener('click', async (e) => {
             e.preventDefault();
             tinymce.triggerSave();
 
@@ -137,7 +164,7 @@
 
             if (response.ok) {
                 alert('Статья сохранена!');
-                window.location.href = 'admin.html';
+                window.location.href = 'article_admin.html';
             } else {
                 const errorText = await response.text();
                 alert('Ошибка: ' + errorText);

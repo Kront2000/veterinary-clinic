@@ -2,6 +2,7 @@ package com.veterinary_clinic.veterinary_clinic.article;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,5 +49,10 @@ public class ArticleController {
     @GetMapping("/getById")
     public ArticleDto getById(@RequestParam("id") Long id){
         return articleService.getById(id);
+    }
+
+    @DeleteMapping
+    public void deleteDish(@RequestParam("id") Long id){
+        articleService.delete(id);
     }
 }

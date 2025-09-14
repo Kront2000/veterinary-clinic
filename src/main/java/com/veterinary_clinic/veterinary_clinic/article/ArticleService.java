@@ -59,4 +59,7 @@ public class ArticleService {
                 .on_main(articleDto.on_main())
                 .build());
     }
+    public void delete(Long id) {
+        articleRepository.deleteById(id);
+    }
 }

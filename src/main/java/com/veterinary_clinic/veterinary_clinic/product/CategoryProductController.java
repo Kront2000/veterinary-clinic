@@ -8,7 +8,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v1/category")
+@RequestMapping("/api/v1/categoryProduct")
 public class CategoryProductController {
 
     private final CategoryProductService service;

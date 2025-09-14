@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Услуги — Зоовет Консалтинг</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/procedure.css">
+
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo_container">
+      <img src="img/ZOOVET_KONSALTING2.png" class="logo_img" alt="">
+    </a>
+    <div class="menu_button_container">
+      <a href="procedure.html" class="menu_button">УСЛУГИ</a>
+      <a href="article.html" class="menu_button">СТАТЬИ</a>
+      <a href="apteka.html" class="menu_button">АПТЕКА</a>
+      <a href="" class="menu_button">КОНТАКТЫ</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Наши услуги</h1>
+    <p>Мы предоставляем полный спектр ветеринарной помощи — от консультаций до сложных операций.
+      Ваш питомец в надежных руках!</p>
+  </section>
+
+  <section class="services" id="services"></section>
+
+  <!-- Модалка -->
+  <div class="modal" id="serviceModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <ul class="price-list" id="modalPrices"></ul>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="bottom_context">
+      <div class="bottom_block">
+        <img src="img/ZOOVET_KONSALTING2.png" class="logo_bottom_img" alt="">
+      </div>
+      <div class="bottom_block">
+        <h3>Адрес</h3>
+        <p>
+          Улица Тауелсыздык, 76 <br>
+          Тобыл, Костанайская область
+        </p>
+      </div>
+      <div class="bottom_block">
+        <h3>График работы</h3>
+        <h1>Ежедневно с 09:00 до 22:00</h1>
+        <h1>Обед c 13:00 до 14:00</h1>
+      </div>
+      <div class="bottom_block">
+        <h3>Контакты</h3>
+        <h1>Whatsapp</h1>
+        <p>+77052125345</p>
+        <p>+77052125345</p>
+        <h1>Telegram</h1>
+        <p>@zoovet</p>
+        <h1>Instagram</h1>
+        <p>@vetklinikakost</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const servicesContainer = document.getElementById("services");
+    const modal = document.getElementById('serviceModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrices = document.getElementById('modalPrices');
+
+    async function loadServices() {
+      try {
+        // запрос к серверу
+        const response = await fetch("/api/v1/procedures");
+        const data = await response.json();
+
+        data.forEach(service => {
+          const card = document.createElement("div");
+          card.className = "service-card";
+          card.innerHTML = `
+            <img src="${service.image_path}" alt="${service.name}">
+            <h3>${service.name}</h3>
+            <p>${service.description}</p>
+          `;
+          card.onclick = () => openModal(service);
+          servicesContainer.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Ошибка загрузки услуг:", error);
+      }
+    }
+
+    function openModal(service) {
+      modalTitle.textContent = service.name;
+      modalDesc.textContent = service.description;
+      modalPrices.innerHTML = "";
+      service.procedures.forEach(proc => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${proc.name}</span><span>${proc.price} тг</span>`;
+        modalPrices.appendChild(li);
+      });
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+
+    loadServices();
+  </script>
+
+</body>
+
+</html>

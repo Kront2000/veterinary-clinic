@@ -1,17 +1,17 @@
 package com.veterinary_clinic.veterinary_clinic.procedures;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
-
+import org.springframework.web.multipart.MultipartFile;
 
 @Builder
-public record ProceduresDto(
-        //TODO message for NotBlank
-        Long id,
-        @NotBlank()
-        String name,
-        String description,
-        String image_path,
-        Long price
-) {
+public record ProceduresDto(Long id,
+                         @NotBlank(message = "Имя отсутствует")
+                         String name,
+                         Long category_id,
+                         String category_name,
+                         boolean on_main,
+                         @Min(value = 1, message = "Цена должна быть больше 1")
+                         Long price) {
 }
