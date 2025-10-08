@@ -1,25 +1,29 @@
+/* =====================
+   GLOBAL
+===================== */
 body {
+    margin: 0;
     display: flex;
     flex-direction: column;
-    margin: 0;
-    font-family: 'Montserrat';
-
+    font-family: 'Montserrat', sans-serif;
 }
 
+/* =====================
+   HEADER (top)
+===================== */
 .top {
     width: 100%;
     height: 640px;
-    background-image: linear-gradient(45deg, rgb(228, 239, 248), rgb(228, 238, 249));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    background: linear-gradient(45deg, rgb(228, 239, 248), rgb(228, 238, 249));
 }
 
 .top_context {
-    width: 80%;
-    /* border: 1px, solid ,black; */
+    width: 1216px;
     height: 100%;
     position: relative;
 }
@@ -35,26 +39,18 @@ body {
     width: 60%;
 }
 
-.logo_img {
-    width: 50%;
-}
-
+.logo_img,
 .gps_img {
     width: 50%;
 }
 
 .menu_button_container {
     display: flex;
-    margin-right: 30px;
-    margin-top: 10px;
-
+    margin: 10px 30px 0 0;
 }
 
 .menu_button {
-    margin: 0px 10px;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Montserrat';
+    margin: 0 10px;
     font-weight: 600;
     font-size: 20px;
     color: rgb(39, 39, 39);
@@ -66,7 +62,6 @@ body {
     left: 0;
     margin-top: 70px;
     width: 50%;
-    font-family: 'Montserrat';
 }
 
 .main_description_head {
@@ -77,81 +72,73 @@ body {
 }
 
 .main_description_body {
-    font-weight: 500;
     margin-top: 20px;
-    font-size: 20px;
-    color: rgb(16, 16, 16);
     width: 80%;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(16, 16, 16);
 }
 
 .dog_img {
-    width: 50%;
     position: absolute;
     right: 20px;
     bottom: 0;
-
+    width: 50%;
 }
 
+/* =====================
+   MIDDLE (cards)
+===================== */
 .middle {
     width: 100%;
     height: 300px;
-    background-image: linear-gradient(45deg, rgb(255, 255, 255), rgb(250, 254, 255));
     display: flex;
     flex-direction: column;
-
     align-items: center;
+    background: linear-gradient(45deg, #fff, rgb(250, 254, 255));
 }
 
 .middle_context {
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 100%;
-
+    width: 1216px;
 }
 
 .cards_container_positional {
     position: absolute;
     top: -40px;
-
-    width: 80%;
-
+    width: 1216px;
 }
 
 .cards_container {
-    display: flex;
-    /* или можно grid */
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-
-
+    
+    display: grid;
+    position: absolute;
+    top: -40px;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
 .card {
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.352);
+    
     padding: 10px;
-    width: 30%;
-    height: 200px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Montserrat';
-
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card img {
-    margin-top: 5px;
+    margin: 5px 0;
     width: 20%;
     border-radius: 12px;
-    margin-bottom: 5pxpx;
 }
 
 .card h3 {
@@ -162,50 +149,55 @@ body {
 }
 
 .card p {
-    font-size: 14px;
-    font-weight: 700;
-    font-size: 15px;
-    color: rgb(39, 67, 102);
     margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(39, 67, 102);
+}
+
+/* =====================
+   PROCEDURES
+===================== */
+.procedures {
+    width: 100%;
+    height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(45deg, rgb(228, 239, 248), rgb(228, 238, 249));
+
+}
+
+.procedures_context {
+    width: 1216px;
+    height: 100%;
+    position: relative;
+}
+
+.procedures_context_img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 45%;
 }
 
 .procedures_description {
     position: absolute;
     right: 0;
-    margin-top: 70px;
     bottom: 20px;
-    font-family: 'Montserrat';
+    margin-top: 70px;
     width: 40%;
-
 }
 
 .procedures_description_head {
+    margin-bottom: 20px;
     font-weight: 700;
     font-size: 60px;
-    color: rgb(39, 67, 102);
     line-height: 0.8;
-    margin-bottom: 20px;
+    color: rgb(39, 67, 102);
 }
-
-.procedures_context_img {
-    width: 45%;
-    position: absolute;
-    left: 0px;
-    bottom: 0;
-}
-
-.procedures_context {
-    width: 80%;
-    /* border: 1px, solid ,black; */
-    height: 100%;
-    position: relative;
-}
-
-/* .procedures_cards{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-} */
 
 .procedures_cards {
     display: block;
@@ -215,167 +207,151 @@ body {
 
 .procedure_card {
     width: 100%;
-    margin: 15px 0px;
+    margin: 15px 0;
     aspect-ratio: 7 / 1;
-    /* border-radius: 10px; */
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.352);
     display: flex;
     align-items: center;
-    font-family: 'Montserrat';
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 .procedures_card_img {
-
     height: 90%;
-    aspect-ratio: 1/1;
-    border-radius: 12px;
+    aspect-ratio: 1 / 1;
     margin-left: 10px;
-
+    border-radius: 12px;
 }
 
-.procedures_a {
-    font-size: 20px;
-    font-weight: 700;
-    color: rgb(39, 67, 102);
-    padding: 10px 20px;
-    position: absolute;
-    bottom: 8%;
-    left: 33%;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.436);
-    text-decoration: none;
-    border: 1px solid rgb(39, 67, 102);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.352);
-
-
-}
-
-.procedure_card_text {
-    position: relative;
+.line {
+    width: 1px;
+    height: 80%;
+    margin: 0 10px;
+    background-color: rgb(39, 67, 102);
 }
 
 .procedure_card_text h3 {
-    margin: 5px 0px;
-    margin-top: 15px;
+    margin: 15px 0 5px;
     font-weight: 700;
     font-size: 30px;
     color: rgb(39, 67, 102);
 }
 
 .procedure_card_text p {
+    margin: 5px 0;
     font-size: 14px;
     font-weight: 700;
     color: rgb(39, 67, 102);
-    margin-bottom: 5px;
-    margin-top: 5px;
-    bottom: 10px;
-    right: 10px;
 }
 
-
-.line {
-    width: 1px;
-    height: 80%;
-    background-color: rgb(39, 67, 102);
-    margin: 0px 10px;
+.procedures_a {
+    position: absolute;
+    bottom: 8%;
+    left: 33%;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(39, 67, 102);
+    text-decoration: none;
+    border: 1px solid rgb(39, 67, 102);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.44);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
+/* =====================
+   APTEKA
+===================== */
 .opteka {
     width: 100%;
-
-    background-image: linear-gradient(45deg, rgb(255, 255, 255), rgb(250, 254, 255));
     display: flex;
     flex-direction: column;
-
     align-items: center;
+    background: linear-gradient(45deg, #fff, rgb(250, 254, 255));
 }
 
 .opteka_context {
-
+    width: 1216px;
     display: flex;
     flex-direction: column;
-
     position: relative;
-    width: 80%;
+}
 
+.apteka_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0 10px;
+}
+
+.apteka_description_head {
+    font-weight: 700;
+    font-size: 50px;
+    color: rgb(39, 67, 102);
+}
+
+.apteka_a {
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(39, 67, 102);
+    text-decoration: none;
+    border: 1px solid rgb(39, 67, 102);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.24);
 }
 
 .apteka_line {
-    width: 80%;
+    width: 1216px;
     height: 2px;
-
     background: linear-gradient(90deg, rgba(39, 67, 102, 0.74), rgba(255, 255, 255, 0));
 }
 
 .carousel {
-
-    width: 100%;
-
-    overflow-x: auto;
-    /* горизонтальная прокрутка */
     display: flex;
     gap: 10px;
-    scroll-snap-type: x mandatory;
-    /* фиксируем карточки */
-    -webkit-overflow-scrolling: touch;
-    /* плавный скролл на телефоне */
-    scrollbar-width: none;
-    /* Firefox */
     padding: 20px 10px;
-
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 
 .carousel::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari */
 }
 
 .apteka_card {
     flex: 0 0 auto;
-    /* запрещаем сжиматься */
     width: 230px;
-    aspect-ratio: 4/6;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    aspect-ratio: 4 / 6;
     display: flex;
     flex-direction: column;
-
-
-    font-size: 18px;
-    scroll-snap-align: center;
     position: relative;
-    /* карточка встаёт по центру */
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    scroll-snap-align: center;
+}
+
+.apteka_card img.apteka_img {
+    width: 90%;
+    margin: 2% 5%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
 }
 
 .apteka_card h3 {
-    font-size: 18px;
-    max-width: 5px;
     margin: 5px;
+    font-size: 18px;
 }
 
 .apteka_card h2 {
-    font-size: 50px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin: 0;
-
-}
-
-.apteka_img {
-    width: 90%;
-    aspect-ratio: 1/1;
-    margin: 2% 5%;
-    border-radius: 10px;
-}
-
-.apteka_next_icon {
-    width: 70%;
-
-    margin: 10% 15%;
-
+    font-size: 50px;
 }
 
 .apteka_card p {
@@ -384,69 +360,42 @@ body {
 }
 
 .apteka_card h1 {
-    font-size: 18px;
     position: absolute;
-    bottom: 5px;
     right: 5px;
+    bottom: 5px;
+    font-size: 18px;
     color: rgb(164, 0, 0);
 }
 
-.apteka_description_head {
-
-    font-weight: 700;
-    font-size: 50px;
-    color: rgb(39, 67, 102);
-
-
-
-}
-
-.apteka_a {
-    font-size: 18px;
-    font-weight: 600;
-    color: rgb(39, 67, 102);
-    padding: 5px 10px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.242);
-    text-decoration: none;
-    border: 1px solid rgb(39, 67, 102);
-}
-
-.apteka_top {
-    margin-top: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    align-items: center;
-}
-
+/* =====================
+   REVIEW
+===================== */
 .review {
     margin-top: 80px;
     width: 100%;
-
-    background-image: linear-gradient(45deg, rgb(255, 255, 255), rgb(250, 254, 255));
     display: flex;
     flex-direction: column;
-
     align-items: center;
+    background: linear-gradient(45deg, #fff, rgb(250, 254, 255));
 }
 
 .review_context {
-    width: 80%;
-
-
+    width: 1216px;
     display: flex;
     flex-direction: column;
+}
 
-
+.review_context_head {
+    font-weight: 700;
+    font-size: 30px;
+    color: rgb(39, 67, 102);
 }
 
 .swiper_review {
     width: 100%;
     height: 300px;
-    background: url("review_background.png");
     border-radius: 10px;
+    background: url("review_background.png");
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.63);
 }
 
@@ -455,46 +404,32 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-
 }
 
 .swiper_review .swiper-slide img {
-    max-height: 80%;
     max-width: 40%;
+    max-height: 80%;
     margin: 0 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.63);
 }
 
-.review_context_head {
-    font-weight: 700;
-    font-size: 30px;
-    color: rgb(39, 67, 102);
-
-}
-
+/* =====================
+   ARTICLES + MAP
+===================== */
 .articles_and_map {
     margin-top: 80px;
     width: 100%;
-    
-    background-image: linear-gradient(45deg, rgb(255, 255, 255), rgb(250, 254, 255));
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(45deg, #fff, rgb(250, 254, 255));
 }
 
 .articles_map_context {
-    width: 80%;
-    
+    width: 1216px;
     display: flex;
     flex-direction: column;
     position: relative;
-}
-
-.articles_head {
-    font-weight: 700;
-    font-size: 30px;
-    color: rgb(39, 67, 102);
-    margin-left: 65px;
 }
 
 .articles_top_container {
@@ -503,81 +438,80 @@ body {
     width: 50%;
 }
 
-.articles_button_container {
-    display: flex;
+.articles_head {
+    margin-left: 65px;
+    font-weight: 700;
+    font-size: 30px;
+    color: rgb(39, 67, 102);
 }
 
-/* Сам слайдер */
 .swiper_articles {
     width: 100%;
-    height: 300px;
-    background-color: #ffffff;
+    height: 200px;
     margin: 10px 0 !important;
-
-
+    background: #fff;
 }
-
 
 .swiper_articles .swiper-wrapper {
-
     border-radius: 10px;
-
-
 }
 
-/* Слайд внутри swiper_articles */
 .swiper_articles .swiper-slide {
     display: flex;
     justify-content: center;
-    
-    font-size: 2rem;
-    background-color: #ffffff;
     width: 85% !important;
     margin: 0 7.5% !important;
-
+    font-size: 2rem;
+    background: #fff;
 }
 
-/* Картинки внутри статей */
 .swiper_articles .swiper-slide img {
     height: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
 }
 
 .articl_slide_text {
     display: flex;
     flex-direction: column;
+    position: relative;
     margin-left: 10px;
     height: 100%;
-    position: relative;
-    width: auto;
-    
 }
 
-.articl_slide_text_h2{
+.articl_slide_text_h2 {
+    margin: 10px 0 10px 3px;
     font-weight: 700;
     font-size: 28px;
     color: rgb(39, 67, 102);
-    margin: 10px 0 10px 3px;
 }
-.articl_slide_text_p{
+
+.articl_slide_text_p {
+    margin: 10px 0 10px 3px;
     font-weight: 700;
     font-size: 15px;
     color: rgb(39, 67, 102);
-    margin: 10px 0 10px 3px;
 }
-.articl_slide_text_a{
+
+.articl_slide_text_a {
     text-decoration: none;
 }
-.articl_slide_text_h1{
+
+.articl_slide_text_h1 {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    padding: 10px;
     font-weight: 700;
     font-size: 15px;
     color: rgb(109, 170, 246);
-    padding: 10px;
-    position: absolute;
-    bottom: 10px;
     border: 1px solid rgb(109, 170, 246);
-    left: 10px;
+}
+.articles {
+    position: absolute;
+    left: 40%;
+    width: 60%;
+    height: 400px;
 }
 
 .map {
@@ -586,12 +520,11 @@ body {
     height: 400px;
 }
 
-.map_a{
+.map_a {
     display: flex;
     width: 100%;
-    height: 80px ;
+    height: 80px;
     margin-top: 20px;
-    
 }
 
 .map_a img {
@@ -600,51 +533,197 @@ body {
     object-fit: cover;
     border-radius: 25px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.63);
-    
-
 }
 
-.articles{
-    position: absolute;
-    left: 40%;
-    height: 400px;
-    width: 60%;
-}
 
+
+/* =====================
+   FOOTER (bottom)
+===================== */
 .bottom {
     margin-top: 80px;
     width: 100%;
     height: 300px;
-    background-image: linear-gradient(45deg, rgb(228, 239, 248), rgb(228, 238, 249));
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(45deg, rgb(228, 239, 248), rgb(228, 238, 249));
 }
 
 .bottom_context {
-    width: 80%;
+    width: 1216px;
     margin-top: 50px;
     display: flex;
-    
     position: relative;
 }
-.bottom_block{
+
+.bottom_block {
     width: 22%;
     height: 100%;
     margin-right: 3%;
 }
+
 .logo_bottom_img {
     width: 100%;
 }
 
-.bottom_block h3{
-    margin: 0 0 5px 0;
-    
-}.bottom_block p{
-    margin: 0 0 5px 0;
+.bottom_block h3 {
+    margin: 0 0 5px;
 }
-.bottom_block h1{
-    margin: 10px 0 5px 0;
+
+.bottom_block p {
+    margin: 0 0 5px;
+}
+
+.bottom_block h1 {
+    margin: 10px 0 5px;
     font-weight: 500;
     font-size: 15px;
-}    
+}
+/* =====================
+   MEDIA QUERIES
+===================== */
+
+/* --- Планшеты и экраны до 1200px --- */
+@media (max-width: 1216px) {
+ .top_context {
+    width: 900px;
+    
+}
+.bottom_context {
+    width: 900px;
+    
+}
+.articles_map_context {
+    width: 900px;
+    
+}
+.review_context {
+    width: 900px;
+    
+}
+.apteka_line {
+    width: 900px;
+    
+}
+.cards_container {
+    width: 900px;
+    
+}
+.procedures_context {
+    width: 900px;
+    
+}
+.opteka_context {
+    width: 900px;
+    
+}
+.middle_context{
+    width: 900px;
+}
+.main_description {
+    margin-top: 35px;
+}
+.main_description_head {
+    font-size: 40px;
+}
+.dog_img {
+    width: 60%;
+}
+.middle {
+    height: 200px;
+}
+
+.card img {
+    margin: 3px 0;
+    width: 20%;
+    border-radius: 12px;
+}
+
+.card h3 {
+    margin: 3px 0;
+    font-size: 25px;
+}
+
+.card p {
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(39, 67, 102);
+}
+.procedures_description_head {
+    margin-bottom: 20px;
+    
+    font-size: 40px;
+}
+.procedure_card {
+    margin: 12px 0;
+}
+
+.procedures_card_img {
+    height: 90%;
+    margin-left: 10px;
+}
+
+.procedure_card_text h3 {
+    margin: 15px 0 5px;
+    font-size: 20px;
+}
+
+.procedure_card_text p {
+    margin: 5px 0;
+    font-size: 14px;
+    
+}
+
+.procedures_a {
+    position: absolute;
+    bottom: 8%;
+    left: 33%;
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 200px;
+}
+.map_a {
+    height: 60px;
+}
+.apteka_a {
+    font-size: 20px;
+}
+.procedures {
+    height: 480px;
+}
+.articl_slide_text_h2 {
+    margin: 10px 0 5px 3px;
+    font-size: 20px;
+}
+
+.articl_slide_text_p {
+    margin: 5px 0 0px 3px;
+    font-size: 14px;
+}
+
+.articl_slide_text_a {
+    text-decoration: none;
+}
+
+.articl_slide_text_h1 {
+    
+    left: 10px;
+    bottom: 2px;
+    padding: 5px;
+    
+    font-size: 12px;
+}
+
+}
+
+/* --- Планшеты вертикально до 992px --- */
+@media (max-width: 992px) {
+  
+}
+
+/* --- Телефоны до 768px --- */
+@media (max-width: 768px) {
+  
+}

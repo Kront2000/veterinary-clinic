@@ -1,0 +1,256 @@
+<!doctype html>
+<html class="p-0 m-0">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            roboto: ['Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="p-0 m-0">
+  <header
+    class="px-2 h-14 md:h-16  fixed items-center top-0 w-full lg:px-30 py-2 flex justify-between shadow-lg bg-white/70 backdrop-blur-md z-50">
+    <img src="img/ZOOVET_KONSALTING3.png" alt="" class="h-full">
+    <nav class="items-center hidden md:block">
+      <a href="" class="m-2 hover:text-indigo-800 text-lg font-medium items-center">Улсуги</a>
+      <a href="" class="m-2 hover:text-indigo-800 text-lg font-medium">Контакты</a>
+      <a href="" class="m-2 hover:text-indigo-800 text-lg font-medium">Аптека</a>
+      <a href="" class="m-2 hover:text-indigo-800 text-lg font-medium">Отзывы</a>
+      <a href="" class="m-2 hover:text-indigo-800 text-lg font-medium">Статьи</a>
+    </nav>
+    <a href=""
+      class="py-2 px-4 rounded-xl items-center hover:bg-indigo-600 shadow-lg bg-indigo-500 text-stone-100 mr-2 hidden">Контакты</a>
+    <button id="burger" class="p-2 space-y-1 md:hidden">
+      <div class="bg-black w-6 h-0.5 "></div>
+      <div class="bg-black w-6 h-0.5"></div>
+      <div class="bg-black w-6 h-0.5"></div>
+    </button>
+
+  </header>
+  <nav id="burgerMenu"
+    class="z-50 fixed md:hidden flex flex-col top-14 right-0  text-stone-800 shadow-lg bg-white/70 backdrop-blur-md hidden space-y-4 ">
+    <a href="" class="active:bg-indigo-100/100 text-2xl  font-medium px-4">Улсуги</a>
+    <a href="" class="active:bg-indigo-100/100 text-2xl font-medium px-4">Контакты</a>
+    <a href="" class="active:bg-indigo-100/100 text-2xl font-medium px-4">Аптека</a>
+    <a href="" class="active:bg-indigo-100/100 text-2xl font-medium px-4">Отзывы</a>
+    <a href="" class="active:bg-indigo-100/100 text-2xl font-medium px-4">Статьи</a>
+  </nav>
+  <section class="pt-16 lg:px-30 lg:aspect-6/2 aspect-5/3 bg-indigo-100 md:aspect-2/1 px-4 flex">
+    <div class="w-1/2 py-2 md:py-8 lg:py-20">
+      <h1 class="text-xl md:text-3xl lg:text-4xl font-bold text-stone-800 ">Забота о ваших петомцах</h1>
+      <p class="text-sm md:text-lg lg:text-xl text-stone-800 my-px">Мы предлагаем полный спектр ветеринарных услуг — от
+        диагностики
+        до лечения
+        и профилактики.</p>
+
+    </div>
+    <div class="w-1/2 relative">
+      <img src="img/dog3.png" class="absolute  lg:max-w-[55%] max-w-[75%] right-4 bottom-0" alt="dog">
+    </div>
+
+  </section>
+
+
+  <section class=" px-4  flex flex-col items-center space-y-4 md:hidden">
+    <h1 class="text-2xl pt-10  mx-auto font-bold text-stone-800">Наши услуги</h1>
+    <div class="aspect-6/3 px-4 pt-4 bg-indigo-100/20  flex flex-col items-center shadow-lg">
+      <p class=" text-center font-light">Наша клиника предоставляет широкий спектр ветеринарных услуг — от
+        профилактических
+        осмотров и вакцинации до
+        сложных диагностических и хирургических процедур.</p>
+    </div>
+    <div class="w-full aspect-6/3 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+      <img src="img/happy.png" class="w-[15%]" alt="">
+      <h1 class="text-xl py-2 mx-auto font-bold text-stone-800">Обследование</h1>
+      <p class=" text-center font-light">Комплексная диагностика здоровья питомцев</p>
+    </div>
+
+    <div class="w-full aspect-6/3 px-4 pt-4 bg-indigo-100/20  flex flex-col items-center shadow-lg">
+      <img src="img/drugs.png" class="w-[15%]" alt="">
+      <h1 class="text-xl py-2 mx-auto font-bold text-stone-800">Срочная помощь</h1>
+      <p class=" text-center font-light">Экстренные выезды и оперативная помощь</p>
+    </div>
+    <div class="w-full aspect-6/3 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+      <img src="img/surgery.png" class="w-[15%]" alt="">
+      <h1 class="text-xl py-2 mx-auto font-bold text-stone-800">Хирургия</h1>
+      <p class=" text-center font-light">Проведение операций любой сложности</p>
+    </div>
+  </section>
+  <section class=" px-4  flex lg:px-30 flex-col items-center space-y-4 hidden md:block">
+    <h1 class="text-2xl pt-10 lg:text-4xl mx-auto font-bold text-stone-800 text-center">Наши услуги</h1>
+
+
+
+    <div class="grid grid-cols-3 grid-rows-2 gap-4 w-full ">
+      <div class="col-span-2 flex flex-col justify-center shadow-lg bg-indigo-100/20">
+        <p
+          class=" text-center font-light lg:px-2 lg:text-lg lg:font-normal h-full flex flex-col items-center justify-center">
+          Наша клиника предоставляет
+          широкий спектр ветеринарных услуг — от
+          профилактических
+          осмотров и вакцинации до
+          сложных диагностических и хирургических процедур.</p>
+      </div>
+      <div class="col-start-3 flex flex-col items-center shadow-lg bg-indigo-100/20 py-2">
+        <img src="img/happy.png" class="w-[15%]" alt="">
+        <h1 class="text-xl py-2 mx-auto font-bold text-stone-800">Обследование</h1>
+        <p class=" text-center font-light lg:px-2 lg:text-lg lg:font-normal">Комплексная диагностика здоровья питомцев
+        </p>
+      </div>
+      <div class="col-start-3 row-start-2">
+
+      </div>
+      <div class="col-start-2 row-start-2 flex flex-col items-center shadow-lg bg-indigo-100/20 py-2">
+        <img src="img/drugs.png" class="w-[15%]" alt="">
+        <h1 class="text-xl py-2 mx-auto font-bold text-stone-800">Срочная помощь</h1>
+        <p class=" text-center font-light lg:px-2 lg:text-lg lg:font-normal">Экстренные выезды и оперативная помощь</p>
+      </div>
+      <div class="col-start-1 row-start-2 flex flex-col items-center shadow-lg bg-indigo-100/20 py-2">
+        <img src="img/surgery.png" class="w-[15%]" alt="">
+        <h1 class="text-xl py-2 mx-auto font-bold text-stone-800">Хирургия</h1>
+        <p class=" text-center font-light lg:px-2 lg:text-lg lg:font-normal">Проведение операций любой сложности</p>
+      </div>
+    </div>
+
+
+
+  </section>
+
+  <section class="my-12 flex flex-col items-center px-4 space-y-4 md:hidden">
+    <h1 class="text-2xl pt-10  mx-auto font-bold text-stone-800">О нашей клинике</h1>
+    <img src="img/about.png" class="w-full aspect-6/3" alt="">
+    <div class="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+      <p class=" text-center font-light">Все услуги в одном месте — от прививок до операций</p>
+    </div>
+    <img src="img/about2.png" class="w-full aspect-6/3" alt="">
+    <div class="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+      <p class=" text-center font-light">Высококвалифицированные специалисты с многолетним опытом</p>
+    </div>
+    <img src="img/about3.png" class="w-full aspect-6/3" alt="">
+    <div class="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+      <p class=" text-center font-light">Современное оборудование и доказательные методы терапии</p>
+    </div>
+    <img src="img/about4.png" class="w-full aspect-6/3" alt="">
+    <div class="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+      <p class=" text-center font-light">Оперативная помощь и забота о здоровье животных на всех этапах жизни</p>
+    </div>
+    <div class="w-full aspect-6/3 pt-4 flex justify-between">
+      <img src="img/spec2.png" class="w-[49%] object-cover max-h-full" alt="">
+      <img src="img/spec1.png" class="w-[49%] object-cover max-h-full" alt="">
+    </div>
+    <div class="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+      <p class=" text-center font-light">Высококвалифицированные специалисты с многолетним опытом</p>
+    </div>
+  </section>
+
+  <section class="my-12 flex hidden md:block flex-col items-center px-4 space-y-4 w-full lg:hidden">
+    <h1 class="text-2xl pt-10  mx-auto font-bold text-stone-800">О нашей клинике</h1>
+    <div class="grid grid-cols-2  gap-4 w-full items-stretch">
+      <div><img src="img/about.png" class="w-full h-full object-cover" alt=""></div>
+      <div><img src="img/about2.png" class="w-full h-full object-cover" alt=""></div>
+      <div class="">
+        <p class="text-center bg-stone-100 py-4 mb-6"> Все услуги в одном месте — от прививок до операций</p>
+      </div>
+      <div>
+        <p class="text-center bg-stone-100 py-4 mb-6">Высококвалифицированные специалисты с многолетним опытом</p>
+      </div>
+      <div class="col-span-2"><img src="img/about3.png" class="w-full" alt=""></div>
+      <div class="col-span-2 bg-stone-100 py-4 mb-6">
+        <p class="text-center">Современное оборудование и доказательные методы терапии</p>
+      </div>
+      <div class="col-span-2 "><img src="img/about4.png" class="w-full" alt=""></div>
+      <div class="col-span-2 bg-stone-100 py-4 mb-6">
+        <p class="text-center">Оперативная помощь и забота о здоровье животных на всех этапах жизни</p>
+      </div>
+      <div class="row-start-7"><img src="img/spec2.png" class="w-full h-full object-cover " alt=""></div>
+      <div class="row-start-7"><img src="img/spec1.png" class="w-full h-full object-cover " alt=""></div>
+      <div class="col-span-2 bg-stone-100 py-4 mb-6">
+        <p class="text-center">Высококвалифицированные специалисты с многолетним опытом</p>
+      </div>
+    </div>
+    </div>
+  </section>
+  <section class="my-12 flex lg:px-30 flex-col hidden items-center px-4 space-y-4 w-full lg:flex">
+    <h1 class="text-2xl pt-10  mx-auto font-bold text-stone-800">О нашей клинике</h1>
+
+
+    <div class="grid grid-cols-4 gap-4 items-stretch w-full">
+      <div class="col-span-2"><img src="img/about.png" class="w-full h-full object-cover" alt=""></div>
+      <div class="col-span-2 col-start-1 row-start-2">
+        <p class="h-full text-center bg-stone-100 py-2 "> Все услуги в одном месте — от прививок до операций</p>
+      </div>
+      <div class="col-span-2 col-start-1 row-start-3"><img src="img/about2.png" class="w-full h-full object-cover"
+          alt=""></div>
+      <div class="col-span-2 col-start-1 row-start-4">
+        <p class="h-full text-center bg-stone-100 py-4 ">Высококвалифицированные специалисты с многолетним опытом</p>
+      </div>
+      <div class="col-start-3 row-start-1"><img src="img/about3.png" class="w-full h-full object-cover" alt=""></div>
+      <div class="col-start-4 row-start-1"><img src="img/about4.png" class="w-full h-full object-cover" alt=""></div>
+      <div class="col-start-3 row-start-2">
+        <p class="h-full text-center bg-stone-100 py-4 ">Оперативная помощь и забота о здоровье животных на всех этапах
+          жизни</p>
+      </div>
+      <div class="col-start-4 row-start-2">
+        <p class="h-full text-center bg-stone-100 py-4 ">Современное оборудование и доказательные методы терапии</p>
+      </div>
+      <div class="col-start-3 row-start-3"><img src="img/spec2.png" class="w-full h-full object-cover " alt=""></div>
+      <div class="col-start-4 row-start-3"><img src="img/spec1.png" class="w-full h-full object-cover " alt=""></div>
+      <div class="col-span-2 col-start-3 row-start-4">
+        <p class="h-full text-center bg-stone-100 py-4 ">Высококвалифицированные специалисты с многолетним опытом</p>
+      </div>
+    </div>
+
+
+
+  </section>
+
+  <footer class=" bg-indigo-500 py-4 px-4 lg:px-30 flex flex-col md:items-start items-center m-0 md:h-100">
+    <img src="img/ZOOVET_KONSALTING4_NEG.png" class="w-[85%] md:w-[35%] lg:w-[20%] mb-8 block" alt="">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+      <div>
+        <h1 class="text-lg py-2 font-semibold text-white py-px">Адрес</h1>
+        <p class="text-sm py-2  font-light text-white py-px">Улица Тауелсыздык, 76
+          Тобыл, Костанайская область</p>
+      </div>
+      <div class="">
+        <h1 class="text-lg py-2 font-semibold text-white py-px">Контакты</h1>
+        <p class="text-sm py-2  font-light text-white py-px">+7‒705‒199‒12‒55</p>
+        <p class="text-sm py-2  font-light text-white py-px">+7‒701‒109‒31‒16</p>
+        <p class="text-sm py-2  font-light text-white py-px">+7‒708‒746‒60‒57</p>
+        <p class="text-sm py-2  font-light text-white py-px">Instagram: vetklinikakost</p>
+      </div>
+      <div class="">
+        <h1 class="text-lg py-2 font-semibold text-white py-px">Режим работы</h1>
+        <p class="text-sm py-2  font-light text-white py-px">Ежедневно с 09:00 до 22:00 </p>
+        <p class="text-sm py-2  font-light text-white py-px">Обед c 13:00 до 14:00</p>
+      </div>
+    </div>
+
+  </footer>
+
+  <script>
+    const burger = document.getElementById("burger");
+    const burgerMenu = document.getElementById("burgerMenu");
+
+    burger.addEventListener("click", () => {
+      burgerMenu.classList.toggle("hidden");
+    });
+  </script>
+</body>
+
+</html>
